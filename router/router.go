@@ -2,6 +2,7 @@ package router
 
 import (
 	"narad/api"
+	"net/http"
 
 	"github.com/gorilla/mux"
 )
@@ -14,6 +15,8 @@ func Router() *mux.Router {
 	// # Root Route
 	router.HandleFunc("/", api.RootRoute).Methods("GET") // # Get server welcome message
 
+	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("public"))))
+
 	// # API Base Path
 	BasePath := "/api/v1"
 
@@ -24,9 +27,11 @@ func Router() *mux.Router {
 	narad := router.PathPrefix(endpoints[0]).Subrouter()
 
 	// # Add routes to the subrouter
-	narad.HandleFunc("/notification", api.SendNotification).Methods("POST") // # Send the notification
-	narad.HandleFunc("/live", api.GetLiveCard).Methods("GET")               // # Get all notifications
-	narad.HandleFunc("/history", api.GetHistoryCard).Methods("GET")         // # Get a single notification
+	narad.HandleFunc("/notification", api.SendNotification).Methods("POST")
+	narad.HandleFunc("/live", api.GetLiveCard).Methods("GET")
+	narad.HandleFunc("/history", api.GetHistoryCard).Methods("GET")
+	narad.HandleFunc("/mark/{org_id}", api.MarkOrgInActive).Methods("PUT")
+	narad.HandleFunc("/upload", api.UploadImage).Methods("POST")
 
 	// # Return Router Object
 	return router

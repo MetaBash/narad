@@ -34,13 +34,18 @@ func SendNotification(data *schema.EmailRequest, camID primitive.ObjectID, ctx c
 
 	image := data.Image
 
+	imageURL, err := utils.UploadImage(image)
+	if err != nil {
+		return "", err
+	}
+
 	if person == "true" {
 		personBool = true
 	} else {
 		personBool = false
 	}
 
-	set := bson.M{"image": image, "is_person": personBool}
+	set := bson.M{"image": imageURL, "is_person": personBool}
 
 	update := bson.M{"$set": set}
 
@@ -155,6 +160,38 @@ func GetHistoryCard(ctx context.Context) (*[]schema.HistoryCard, error) {
 	}
 
 	return &historyCard, nil
+}
+
+// # Mark Organisation Inactive
+func MarkOrgInActive(orgID string, ctx context.Context) (string, error) {
+	var err error
+
+	var errMsg string
+
+	narad := env.GetEnv("NARAD", "narad")
+
+	naradColl := db.GetCollectionByName(narad)
+
+	active := false
+
+	filter := bson.M{"org_id": orgID}
+
+	set := bson.M{"is_active": active}
+
+	update := bson.M{"$set": set}
+
+	res, err := naradColl.UpdateMany(ctx, filter, update)
+	if err != nil {
+		errMsg = "error: failed to mark organisation inactive"
+		err = errors.New(errMsg)
+		return "", err
+	}
+
+	count := int(res.ModifiedCount)
+
+	successMsg := fmt.Sprintf("Marked organisations 'Inactive' successfully with object modified count of %d", count)
+
+	return successMsg, nil
 }
 
 // // # Send Notification

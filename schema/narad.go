@@ -77,3 +77,8 @@ type HistoryCard struct {
 	IsPerson     bool   `bson:"is_person,omitempty" json:"is_person,omitempty"`
 	IsActive     bool   `bson:"is_active,omitempty" json:"is_active,omitempty"`
 }
+
+// # Image Model
+type Image struct {
+	Image string `bson:"image,omitempty" json:"image,omitempty"`
+}

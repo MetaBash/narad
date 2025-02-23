@@ -9,6 +9,7 @@ import (
 	"narad/utils"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -76,7 +77,7 @@ func SendNotification(w http.ResponseWriter, r *http.Request) {
 // # Get Live Card
 func GetLiveCard(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Allow-Control-Allow-Methods", "POST")
+	w.Header().Set("Allow-Control-Allow-Methods", "GET")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	var err error
@@ -95,7 +96,7 @@ func GetLiveCard(w http.ResponseWriter, r *http.Request) {
 // # Get History Card
 func GetHistoryCard(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Allow-Control-Allow-Methods", "POST")
+	w.Header().Set("Allow-Control-Allow-Methods", "GET")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	var err error
@@ -109,4 +110,71 @@ func GetHistoryCard(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.SendPayload(w, res)
+}
+
+// # Mark Organisation Inactive
+func MarkOrgInActive(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Allow-Control-Allow-Methods", "PUT")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	var err error
+
+	var errMsg string
+
+	params := mux.Vars(r)
+
+	orgID := params["org_id"]
+
+	if orgID == "" {
+		errMsg = "error: 'org_id' query parameter is required"
+		err = errors.New(errMsg)
+		utils.SendError(w, err)
+		return
+	}
+
+	ctx := context.Background()
+
+	res, err := app.MarkOrgInActive(orgID, ctx)
+	if err != nil {
+		utils.SendError(w, err)
+		return
+	}
+
+	utils.SendPayload(w, res)
+}
+
+// # Upload Image
+func UploadImage(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Allow-Control-Allow-Methods", "POST")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	var err error
+
+	var errMsg string
+
+	var image *schema.Image
+
+	decoder := json.NewDecoder(r.Body)
+
+	err = decoder.Decode(&image)
+	if err != nil {
+		utils.SendError(w, err)
+		return
+	}
+
+	base64ImgStr := image.Image
+
+	folder := "public"
+
+	res, err := utils.SaveBase64Image(base64ImgStr, folder)
+	if err != nil {
+		errMsg = "error: failed to save image: " + err.Error()
+		err = errors.New(errMsg)
+		utils.SendError(w, err)
+		return
+	}
+
+	utils.SendSuccess(w, res)
 }
