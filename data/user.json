@@ -1,0 +1,32 @@
+[
+    {
+        "_id": {
+            "$oid": "650c1a3e5b3f3c6d1a1e2e1a"
+        },
+        "name": "Suraj Dalvi",
+        "email": "dalvisuraj256@gmail.com",
+        "org_id": {
+            "$oid": "650c2b4e5b3f3c6d1a1e3e1a"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "650c1b4e5b3f3c6d1a1e2e1b"
+        },
+        "name": "Ronak Dagale",
+        "email": "ronaksdagale16@gmail.com",
+        "org_id": {
+            "$oid": "650c2b4e5b3f3c6d1a1e3e1b"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "650c1c4e5b3f3c6d1a1e2e1c"
+        },
+        "name": "Prathamesh Chougale",
+        "email": "prathamesh17170@gmail.com",
+        "org_id": {
+            "$oid": "650c2b4e5b3f3c6d1a1e3e1c"
+        }
+    }
+]

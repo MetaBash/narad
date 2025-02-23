@@ -1,0 +1,74 @@
+[
+    {
+        "_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e1a"
+        },
+        "name": "Cam-101",
+        "ip_address": "192.168.1.10",
+        "building_no": "10",
+        "building_name": "Tech Hub",
+        "floor_no": "2",
+        "floor_name": "Development",
+        "room_no": "201",
+        "room_name": "Server Room",
+        "area_name": "North Wing",
+        "coordinates": {
+            "latitude": 37.7749,
+            "longitude": -122.4194
+        },
+        "address": "123 Silicon Valley",
+        "city": "San Francisco",
+        "state": "California",
+        "country": "USA",
+        "pincode": "94016",
+        "map_location": "https://www.google.com/maps/place/37.7749,-122.4194"
+    },
+    {
+        "_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e1b"
+        },
+        "name": "Cam-102",
+        "ip_address": "192.168.1.11",
+        "building_no": "20",
+        "building_name": "AI Center",
+        "floor_no": "5",
+        "floor_name": "Research Lab",
+        "room_no": "501",
+        "room_name": "AI Lab",
+        "area_name": "East Wing",
+        "coordinates": {
+            "latitude": 34.0522,
+            "longitude": -118.2437
+        },
+        "address": "456 Innovation Drive",
+        "city": "Los Angeles",
+        "state": "California",
+        "country": "USA",
+        "pincode": "90012",
+        "map_location": "https://www.google.com/maps/place/34.0522,-118.2437"
+    },
+    {
+        "_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e1c"
+        },
+        "name": "Cam-103",
+        "ip_address": "192.168.1.12",
+        "building_no": "30",
+        "building_name": "Cyber Tower",
+        "floor_no": "3",
+        "floor_name": "Security Dept",
+        "room_no": "301",
+        "room_name": "Control Room",
+        "area_name": "West Wing",
+        "coordinates": {
+            "latitude": 40.7128,
+            "longitude": -74.0060
+        },
+        "address": "789 Cyber Lane",
+        "city": "New York",
+        "state": "New York",
+        "country": "USA",
+        "pincode": "10001",
+        "map_location": "https://www.google.com/maps/place/40.7128,-74.0060"
+    }
+]

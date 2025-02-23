@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Fire Alert Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert-box {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .high-alert {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .normal-alert {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>🚨 Fire Alert Notification</h2>
+
+        <div class="alert-box %s">
+            %s
+        </div>
+
+        <p>Dear %s,</p>
+        <p>An alert has been triggered by one of your camera. Please find the details below:</p>
+
+        <table>
+            <tr>
+                <th>Column</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Camera ID</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Camera Name</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Organization ID</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Organization Name</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>IP Address</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Building No.</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Building Name</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Floor No.</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Floor Name</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Room No</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Room Name</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Area Name</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Latitude</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Longitude</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Pincode</td>
+                <td>%s</td>
+            </tr>
+            <tr>
+                <td>Map Location</td>
+                <td><a href="%s" target="_blank">View on Map</a></td>
+            </tr>
+        </table>
+
+        <p>We strongly recommend taking immediate action based on the alert type:</p>
+        <ul>
+            <li><strong style="color: #ff4d4d;">High Alert:</strong> A human or pet animal has been detected in a
+                restricted zone. Please check your camera feed urgently.</li>
+            <li><strong style="color: #ffcc00;">Alert:</strong> A fire has been detected in the monitored area. Please
+                verify and ensure safety measures are in place.</li>
+        </ul>
+
+        <p>For further assistance, please contact support immediately.</p>
+
+        <div class="footer">
+            <div class="footer">
+                <p>Best regards,<br>Security Team - <span
+                        style="color: darkblue; font-weight: bold; font-style: italic;">Homebrew</span></p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

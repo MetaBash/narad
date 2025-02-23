@@ -1,0 +1,29 @@
+[
+    {
+        "_id": {
+            "$oid": "650c2b4e5b3f3c6d1a1e3e1a"
+        },
+        "name": "PCCOE College",
+        "cam_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e1a"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "650c2b4e5b3f3c6d1a1e3e1b"
+        },
+        "name": "AISSMS College",
+        "cam_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e1b"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "650c2b4e5b3f3c6d1a1e3e1c"
+        },
+        "name": "PICT College",
+        "cam_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e1c"
+        }
+    }
+]

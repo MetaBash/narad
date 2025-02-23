@@ -1,0 +1,152 @@
+[
+    {
+        "_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e5a"
+        },
+        "cam_name": "Cam-101",
+        "org_id": "650c2b4e5b3f3c6d1a1e3e1a",
+        "org_name": "COEP Pune Campus",
+        "users": [
+            {
+                "_id": "650c1a3e5b3f3c6d1a1e2e1a",
+                "name": "Suraj Dalvi",
+                "email": "dalvisuraj256@gmail.com"
+            },
+            {
+                "_id": "650c1b4e5b3f3c6d1a1e2e1b",
+                "name": "Ronak Dagale",
+                "email": "ronaksdagale16@gmail.com"
+            },
+            {
+                "_id": "650c1c4e5b3f3c6d1a1e2e1c",
+                "name": "Prathamesh Chougale",
+                "email": "prathamesh17170@gmail.com"
+            },
+            {
+                "_id": "650c1d4e5b3f3c6d1a1e2e1d",
+                "name": "Tarun Rathod",
+                "email": "tarunrathod00805@gmail.com"
+            }
+        ],
+        "ip_address": "192.168.1.10",
+        "building_no": "10",
+        "building_name": "Computer Department",
+        "floor_no": "2",
+        "floor_name": "Development",
+        "room_no": "201",
+        "room_name": "Server Room",
+        "area_name": "COEP Art Circle",
+        "coordinates": {
+            "latitude": "37.7749",
+            "longitude": "-122.4194"
+        },
+        "address": "Pimpri, Pune",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411017",
+        "map_location": "https://www.google.com/maps/place/37.7749,-122.4194",
+        "cause": "The fire was caused by a short circuit in the server room",
+        "is_person": false
+    },
+    {
+        "_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e5b"
+        },
+        "cam_name": "Cam-102",
+        "org_id": "650c2b4e5b3f3c6d1a1e3e1a",
+        "org_name": "COEP Pune Campus",
+        "users": [
+            {
+                "_id": "650c1a3e5b3f3c6d1a1e2e1a",
+                "name": "Suraj Dalvi",
+                "email": "dalvisuraj256@gmail.com"
+            },
+            {
+                "_id": "650c1b4e5b3f3c6d1a1e2e1b",
+                "name": "Ronak Dagale",
+                "email": "ronaksdagale16@gmail.com"
+            },
+            {
+                "_id": "650c1c4e5b3f3c6d1a1e2e1c",
+                "name": "Prathamesh Chougale",
+                "email": "prathamesh17170@gmail.com"
+            },
+            {
+                "_id": "650c1d4e5b3f3c6d1a1e2e1d",
+                "name": "Tarun Rathod",
+                "email": "tarunrathod00805@gmail.com"
+            }
+        ],
+        "ip_address": "192.188.1.12",
+        "building_no": "10",
+        "building_name": "IT Department",
+        "floor_no": "5",
+        "floor_name": "Coding",
+        "room_no": "501",
+        "room_name": "Tutorial Room",
+        "area_name": "COEP Canteen",
+        "coordinates": {
+            "latitude": "37.7749",
+            "longitude": "-122.4194"
+        },
+        "address": "Pimpri, Pune",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411017",
+        "map_location": "https://www.google.com/maps/place/37.7749,-122.4194",
+        "cause": "The fire was caused by a computer short circuit in the tutorial room",
+        "is_person": false
+    },
+    {
+        "_id": {
+            "$oid": "650c3c5e5b3f3c6d1a1e4e5c"
+        },
+        "cam_name": "Cam-103",
+        "org_id": "650c2b4e5b3f3c6d1a1e3e1a",
+        "org_name": "COEP Pune Campus",
+        "users": [
+            {
+                "_id": "650c1a3e5b3f3c6d1a1e2e1a",
+                "name": "Suraj Dalvi",
+                "email": "dalvisuraj256@gmail.com"
+            },
+            {
+                "_id": "650c1b4e5b3f3c6d1a1e2e1b",
+                "name": "Ronak Dagale",
+                "email": "ronaksdagale16@gmail.com"
+            },
+            {
+                "_id": "650c1c4e5b3f3c6d1a1e2e1c",
+                "name": "Prathamesh Chougale",
+                "email": "prathamesh17170@gmail.com"
+            },
+            {
+                "_id": "650c1d4e5b3f3c6d1a1e2e1d",
+                "name": "Tarun Rathod",
+                "email": "tarunrathod00805@gmail.com"
+            }
+        ],
+        "ip_address": "192.168.1.10",
+        "building_no": "10",
+        "building_name": "E&TC Department",
+        "floor_no": "3",
+        "floor_name": "Electronics",
+        "room_no": "301",
+        "room_name": "Reading Lab",
+        "area_name": "COEP Library",
+        "coordinates": {
+            "latitude": "37.7749",
+            "longitude": "-122.4194"
+        },
+        "address": "Pimpri, Pune",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411017",
+        "map_location": "https://www.google.com/maps/place/37.7749,-122.4194",
+        "cause": "The fire was caused by firecrackers in the reading lab",
+        "is_person": true
+    }
+]
