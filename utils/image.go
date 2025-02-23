@@ -53,7 +53,7 @@ func SaveBase64Image(base64ImgStr, folderPath string) (string, error) {
 		return "", err
 	}
 
-	imageURL := fmt.Sprintf("http://localhost:3001/images/%s", fileName)
+	imageURL := fmt.Sprintf("https://narad-kdmq.onrender.com/images/%s", fileName)
 
 	return imageURL, nil
 }
