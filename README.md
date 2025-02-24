@@ -1,6 +1,6 @@
-<!-- # Book Store Readme # -->
+<!-- # Narad Service Readme # -->
 
-# Book Store
+# Narad Service
 
 A simple `narad` service built in Go
 
