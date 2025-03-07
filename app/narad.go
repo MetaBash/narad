@@ -345,8 +345,8 @@ func SendEmail(data *schema.Email) (string, error) {
 		return "", err
 	}
 
-	var emails []string = make([]string, 0)
-	emails = append(emails, data.Email)
+	// var emails []string = make([]string, 0)
+	// emails = append(emails, data.Email)
 
 	var adminEmails []string = make([]string, 0)
 	adminEmails = append(adminEmails, smtpUser)
@@ -367,38 +367,38 @@ func SendEmail(data *schema.Email) (string, error) {
 		return "", err
 	}
 
-	emailTemplate = `<h2>Thank You {{.Name}}!</h2>
-<p>We have received your message and will get back to you soon.</p>
-<p>Best Regards,<br>Cresa Club</p>`
+	// 	emailTemplate = `<h2>Thank You {{.Name}}!</h2>
+	// <p>We have received your message and will get back to you soon.</p>
+	// <p>Best Regards,<br>Cresa Club</p>`
 
-	template, err = template.New("thank").Parse(emailTemplate)
-	if err != nil {
-		errMsg = "error: error parsing thank you email template: " + err.Error()
-		err = errors.New(errMsg)
-		return "", err
-	}
+	// 	template, err = template.New("thank").Parse(emailTemplate)
+	// 	if err != nil {
+	// 		errMsg = "error: error parsing thank you email template: " + err.Error()
+	// 		err = errors.New(errMsg)
+	// 		return "", err
+	// 	}
 
-	if err = template.Execute(&emailBody, data); err != nil {
-		errMsg = "error: error executing thank you email template: " + err.Error()
-		err = errors.New(errMsg)
-		return "", err
-	}
+	// 	if err = template.Execute(&emailBody, data); err != nil {
+	// 		errMsg = "error: error executing thank you email template: " + err.Error()
+	// 		err = errors.New(errMsg)
+	// 		return "", err
+	// 	}
 
-	subject = "Thank you for contacting us!"
+	// 	subject = "Thank you for contacting us!"
 
-	email = emailBody.String()
+	// 	email = emailBody.String()
 
-	message = fmt.Sprintf("Subject: %s\nMIME-Version: 1.0\nContent-Type: text/html; charset=\"UTF-8\"\n\n%s", subject, email)
+	// 	message = fmt.Sprintf("Subject: %s\nMIME-Version: 1.0\nContent-Type: text/html; charset=\"UTF-8\"\n\n%s", subject, email)
 
-	msg = []byte(message)
+	// 	msg = []byte(message)
 
-	err = smtp.SendMail(smtpAddress, smtpAuth, smtpUser, emails, msg)
+	// 	err = smtp.SendMail(smtpAddress, smtpAuth, smtpUser, emails, msg)
 
-	if err != nil {
-		errMsg = "error: failed to send thank you email: " + err.Error()
-		err = errors.New(errMsg)
-		return "", err
-	}
+	// 	if err != nil {
+	// 		errMsg = "error: failed to send thank you email: " + err.Error()
+	// 		err = errors.New(errMsg)
+	// 		return "", err
+	// 	}
 
 	return "Email sent successfully!", nil
 }
