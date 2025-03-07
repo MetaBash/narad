@@ -328,8 +328,8 @@ func SendEmail(data *schema.Email) (string, error) {
 
 	emailTemplate := `<h2>New Message from {{.Name}}</h2>
 	<p><strong>Email:</strong> {{.Email}}</p>
-	<p><strong>Message:</strong></p>
-	<p>{{.Message}}</p>`
+	<p><strong>Subject:</strong> {{.Subject}}</p>
+	<p><strong>Message:</strong> {{.Message}} </p>`
 
 	template, err := template.New("email").Parse(emailTemplate)
 	if err != nil {
