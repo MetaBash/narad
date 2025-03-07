@@ -82,3 +82,11 @@ type HistoryCard struct {
 type Image struct {
 	Image string `bson:"image,omitempty" json:"image,omitempty"`
 }
+
+// # Email Model
+type Email struct {
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Subject string `json:"subject"`
+	Message string `json:"message"`
+}

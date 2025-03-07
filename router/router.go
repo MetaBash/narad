@@ -28,6 +28,7 @@ func Router() *mux.Router {
 
 	// # Add routes to the subrouter
 	narad.HandleFunc("/notification", api.SendNotification).Methods("POST")
+	narad.HandleFunc("/email", api.SendEmail).Methods("POST")
 	narad.HandleFunc("/live", api.GetLiveCard).Methods("GET")
 	narad.HandleFunc("/history", api.GetHistoryCard).Methods("GET")
 	narad.HandleFunc("/mark/{org_id}", api.MarkOrgInActive).Methods("PUT")

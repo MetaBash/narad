@@ -1,14 +1,17 @@
 package app
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"fmt"
+	"html/template"
 	"narad/db"
 	"narad/env"
 	"narad/model"
 	"narad/schema"
 	"narad/utils"
+	"net/smtp"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -302,3 +305,100 @@ func MarkOrgInActive(orgID string, ctx context.Context) (string, error) {
 
 // 	return "Email alert notification sent successfully", nil
 // }
+
+// # Send Email
+func SendEmail(data *schema.Email) (string, error) {
+	smtpUser := env.GetEnv("SMTP_USER", "email")
+
+	smtpPass := env.GetEnv("SMTP_PASS", "password")
+
+	smtpHost := env.GetEnv("SMTP_HOST", "host")
+
+	smtpPort := env.GetEnv("SMTP_PORT", "port")
+
+	smtpAuth := smtp.PlainAuth("", smtpUser, smtpPass, smtpHost)
+
+	smtpAddress := smtpHost + ":" + smtpPort
+
+	var err error
+
+	var errMsg string
+
+	var emailBody bytes.Buffer
+
+	emailTemplate := `<h2>New Message from {{.Name}}</h2>
+	<p><strong>Email:</strong> {{.Email}}</p>
+	<p><strong>Message:</strong></p>
+	<p>{{.Message}}</p>`
+
+	template, err := template.New("email").Parse(emailTemplate)
+	if err != nil {
+		errMsg = "error: error parsing email template: " + err.Error()
+		err = errors.New(errMsg)
+		return "", err
+	}
+
+	err = template.Execute(&emailBody, data)
+	if err != nil {
+		errMsg = "error: error executing email template: " + err.Error()
+		err = errors.New(errMsg)
+		return "", err
+	}
+
+	var emails []string = make([]string, 0)
+	emails = append(emails, data.Email)
+
+	var adminEmails []string = make([]string, 0)
+	adminEmails = append(adminEmails, smtpUser)
+
+	subject := "New Message from [ " + data.Name + " ]"
+
+	email := emailBody.String()
+
+	message := fmt.Sprintf("Subject: %s\nMIME-Version: 1.0\nContent-Type: text/html; charset=\"UTF-8\"\n\n%s", subject, email)
+
+	msg := []byte(message)
+
+	err = smtp.SendMail(smtpAddress, smtpAuth, smtpUser, adminEmails, msg)
+
+	if err != nil {
+		errMsg = "error: failed to send email: " + err.Error()
+		err = errors.New(errMsg)
+		return "", err
+	}
+
+	emailTemplate = `<h2>Thank You {{.Name}}!</h2>
+<p>We have received your message and will get back to you soon.</p>
+<p>Best Regards,<br>Cresa Club</p>`
+
+	template, err = template.New("thank").Parse(emailTemplate)
+	if err != nil {
+		errMsg = "error: error parsing thank you email template: " + err.Error()
+		err = errors.New(errMsg)
+		return "", err
+	}
+
+	if err = template.Execute(&emailBody, data); err != nil {
+		errMsg = "error: error executing thank you email template: " + err.Error()
+		err = errors.New(errMsg)
+		return "", err
+	}
+
+	subject = "Thank you for contacting us!"
+
+	email = emailBody.String()
+
+	message = fmt.Sprintf("Subject: %s\nMIME-Version: 1.0\nContent-Type: text/html; charset=\"UTF-8\"\n\n%s", subject, email)
+
+	msg = []byte(message)
+
+	err = smtp.SendMail(smtpAddress, smtpAuth, smtpUser, emails, msg)
+
+	if err != nil {
+		errMsg = "error: failed to send thank you email: " + err.Error()
+		err = errors.New(errMsg)
+		return "", err
+	}
+
+	return "Email sent successfully!", nil
+}

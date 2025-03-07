@@ -178,3 +178,30 @@ func UploadImage(w http.ResponseWriter, r *http.Request) {
 
 	utils.SendSuccess(w, res)
 }
+
+// # Send Email
+func SendEmail(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Allow-Control-Allow-Methods", "POST")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	var err error
+
+	var data schema.Email
+
+	decoder := json.NewDecoder(r.Body)
+
+	err = decoder.Decode(&data)
+	if err != nil {
+		utils.SendError(w, err)
+		return
+	}
+
+	res, err := app.SendEmail(&data)
+	if err != nil {
+		utils.SendError(w, err)
+		return
+	}
+
+	utils.SendSuccess(w, res)
+}
