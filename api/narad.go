@@ -183,7 +183,7 @@ func UploadImage(w http.ResponseWriter, r *http.Request) {
 func SendEmail(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Allow-Control-Allow-Methods", "POST")
-	// w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Origin", "https://cresaclub.vercel.app")
 
 	var err error
 
